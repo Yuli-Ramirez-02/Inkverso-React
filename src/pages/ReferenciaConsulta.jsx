@@ -1,0 +1,10 @@
+function ReferenciaConsulta() {
+    return (
+        <div>
+            <h1>Libros de Ficción</h1>
+            {/* Aquí irían las tarjetas de libros */}
+        </div>
+    );
+}
+
+export default ReferenciaConsulta;

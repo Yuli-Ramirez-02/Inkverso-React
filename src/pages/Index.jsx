@@ -34,14 +34,37 @@ function Index() {
         </nav>
 
         <section className="categories">
-            <h2>CATEGORÍAS</h2>
-            <div><Link to="">Ficción</Link></div>
-            <div><Link to="">No Ficción</Link></div>
-            <div><Link to="">Infantil y Juvenil</Link></div>
-            <div><Link to="">Referencia y Consulta</Link></div>
-            <div><Link to="">Artes y Humanidades</Link></div>
-            <div><Link to="">Educación</Link></div>
-            <div><Link to="">Entretenimiento</Link></div>
+            <h2 className="categories__title">CATEGORÍAS</h2>
+            <div className="section">
+                <div>
+                    <img className="section__img--category" src="/assets/ciencia ficcion.jpg" alt="imagen ficcion"></img>
+                    <Link className="section__title" to="/Ficcion">Ficción</Link>
+                </div>
+                <div>
+                    <img className="section__img--category" src="/assets/no ficcion.jpg" alt="imagen no ficcion"></img>
+                    <Link className="section__title" to="/NoFiccion">No Ficción</Link>
+                </div>
+                <div>
+                    <img className="section__img--category" src="/assets/juvenil o infantil.jpg" alt="imagen infantil"></img>
+                    <Link className="section__title" to="/InfantilJuvenil">Infantil y Juvenil</Link>
+                </div>
+                <div>
+                    <img className="section__img--category" src="/assets/referencia o consulta.jpg" alt="imagen referencia"></img>
+                    <Link className="section__title" to="/ReferenciaConsulta">Referencia y Consulta</Link>
+                </div>
+                <div>
+                    <img className="section__img--category" src="/assets/artes y humanidades.jpg" alt="imagen artes"></img>
+                    <Link className="section__title" to="/ArtesHumanidades">Artes y Humanidades</Link>
+                </div>
+                <div>
+                    <img className="section__img--category" src="/assets/educacion.jpg" alt="imagen educacion"></img>
+                    <Link className="section__title" to="/Educacion">Educación</Link>
+                </div>
+                <div>
+                    <img className="section__img--category" src="/assets/entretenimiento.jpg" alt="imagen entretenimiento"></img>
+                    <Link className="section__title" to="/Entretenimiento">Entretenimiento</Link>
+                </div>
+            </div>
         </section>
 
         <section className="offers">
