@@ -1,8 +1,22 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/style.css";
 
 
 function Index() {
+    const navigate = useNavigate();
+
+    //Funcion para el boton ingresar
+    const handleIngresarClick = () => {
+        //Logica
+        navigate('/login');
+    }
+
+    //Funcion para el boton registrate
+    const handleRegistrateClick = () => {
+        //Logica
+        navigate('/registro')
+    }
+
     return(
         <>
         <header className="header">
@@ -14,8 +28,8 @@ function Index() {
         </div>
 
         <div className="entry">
-            <button className="entry__button entry__button--register">Registrate</button>
-            <button className="entry__button entry__button--into">Ingresar</button>
+            <button className="entry__button entry__button--register" onClick={handleRegistrateClick}>Registrate</button>
+            <button className="entry__button entry__button--into" onClick={handleIngresarClick}>Ingresar</button>
         </div>
     </header>
 
@@ -34,7 +48,7 @@ function Index() {
         </nav>
 
         <section className="categories">
-            <h2 className="categories__title">CATEGORÍAS</h2>
+            <h2 className="categories__title">categorias</h2>
             <div className="section">
                 <div>
                     <img className="section__img--category" src="/assets/ciencia ficcion.jpg" alt="imagen ficcion"></img>
@@ -69,7 +83,7 @@ function Index() {
 
         <section className="offers">
             <span className="offers__bar">-------------------</span>
-            <h2>OFERTAS</h2>
+            <h2>ofertas</h2>
             <span className="offers__bar">-------------------</span>
         </section>
     </main>

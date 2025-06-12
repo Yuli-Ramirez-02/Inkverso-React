@@ -39,11 +39,12 @@ h1 {
 }
 
 h2 {
-    font-family: 'display';
     color: #000000;
-    text-align: center;
+    font-family: 'display';
     font-size: 4rem;
     font-weight: 500;
+    text-align: center;
+    text-transform: uppercase;
 }
 
 footer {
@@ -189,12 +190,74 @@ footer {
     width: 6rem;
 }
 
-.section__title {
+/*Login*/
+.background {
+    align-items: center;
+    background-image: url('/assets/Imagen de fondo.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
 
+.container {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    height: 500px;
+    max-width: 400px;
+    padding: 2rem;
+    text-align: center;
+    width: 100%;
+}
+
+.container__form h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 90px;
+}
+
+.form {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.form input {
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 1rem;
+    margin-top: 40px;
+    padding: 0.5rem 15px;
+    width: calc(100% - 3px);
+}
+
+.form:nth-last-child(2) input {
+    margin-top: 0;
 }
 
 
-/*footer*/
+.button__login {
+    background-color: #2980B9;
+    border-radius: 5px;
+    color: #D9D9D9;
+    font-size: 15px;
+    margin-bottom: 50px;
+    margin-top: 20px;
+    padding: 10px 40px;
+    text-transform: uppercase;
+
+}
+
+.link__recover,
+.link__register {
+    font-size: medium;
+}
+
+
+/*Footer*/
 .footer__content {
     width: 100%;
     max-width: 1200px;

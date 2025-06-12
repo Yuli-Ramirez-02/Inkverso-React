@@ -18,6 +18,8 @@ import Entretenimiento from "./pages/Entretenimiento";
 
 import Login from "./pages/Login";
 
+import Register from "./pages/Registro";
+
 
 function App() {
   return (
@@ -38,6 +40,11 @@ function App() {
         <Route path="/entretenimiento" element={<Entretenimiento />} />
 
         /**Login */
+        <Route path="/login" element={<Login />} />
+
+        /**Register */
+        <Route path="/Registro" element={<Register />} />
+        
       </Routes>
     </Router>
   );
