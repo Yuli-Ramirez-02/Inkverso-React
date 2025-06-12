@@ -35,7 +35,7 @@ function Register() {
                             id='name'
                             name='name'
                             value={name}
-                            onChange={(e) => setUsername(e.target.value)}
+                            onChange={(e) => setName(e.target.value)}
                             required
                             autoComplete='name'
                             placeholder='Tu nombre'
@@ -49,7 +49,7 @@ function Register() {
                             id='lastname'
                             name='lastname'
                             value={lastname}
-                            onChange={(e) => setUsername(e.target.value)}
+                            onChange={(e) => setLastname(e.target.value)}
                             required
                             autoComplete='lastname'
                             placeholder='Tu apellido'
@@ -63,7 +63,7 @@ function Register() {
                             id='address'
                             name='address'
                             value={address}
-                            onChange={(e) => setUsername(e.target.value)}
+                            onChange={(e) => setAddress(e.target.value)}
                             required
                             autoComplete='address'
                             placeholder='Tu direccion'
@@ -77,7 +77,7 @@ function Register() {
                             id='email'
                             name='email'
                             value={email}
-                            onChange={(e) => setUsername(e.target.value)}
+                            onChange={(e) => setEmail(e.target.value)}
                             required
                             autoComplete='email'
                             placeholder='Tu correo'
@@ -106,7 +106,7 @@ function Register() {
                             id='confirmPassword'
                             name='confirmPassword'
                             value={confirmPassword}
-                            onChange={(e) => setPassword(e.target.value)}
+                            onChange={(e) => setConfirmPassword(e.target.value)}
                             required
                             minLength={8}
                             autoComplete='current-password'

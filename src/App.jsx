@@ -20,6 +20,8 @@ import Login from "./pages/Login";
 
 import Register from "./pages/Registro";
 
+import Recover from "./pages/Recuperar";
+
 
 function App() {
   return (
@@ -44,6 +46,9 @@ function App() {
 
         /**Register */
         <Route path="/Registro" element={<Register />} />
+
+        /**Recuperar */
+        <Route path="/Recuperar" element={<Recover />}/>
         
       </Routes>
     </Router>

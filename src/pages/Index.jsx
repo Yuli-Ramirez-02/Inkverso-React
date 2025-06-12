@@ -1,6 +1,4 @@
 import { Link, useNavigate } from "react-router-dom";
-import "../styles/style.css";
-
 
 function Index() {
     const navigate = useNavigate();
