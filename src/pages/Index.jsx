@@ -14,7 +14,7 @@ function Index() {
     //Funcion para el boton registrate
     const handleRegistrateClick = () => {
         //Logica
-        navigate('/registro')
+        navigate('/Registro')
     }
 
     return(

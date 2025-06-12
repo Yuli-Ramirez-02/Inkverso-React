@@ -53,7 +53,7 @@ function Login() {
                 </form>
 
                 <p>¿Olvidaste tu contraseña?<Link to="" className='link__recover'>Recuperala</Link></p>
-                <p>¿No tienes cuenta?<Link to="" className='link__register'> Registrate</Link></p>
+                <p>¿No tienes cuenta?<Link to="/Registro" className='link__register'> Registrate</Link></p>
             </div>
         </div>
     );

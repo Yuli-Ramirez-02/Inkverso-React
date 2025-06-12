@@ -190,7 +190,7 @@ footer {
     width: 6rem;
 }
 
-/*Login*/
+/*Login y registro*/
 .background {
     align-items: center;
     background-image: url('/assets/Imagen de fondo.jpg');
@@ -206,7 +206,7 @@ footer {
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    height: 500px;
+    height: auto;
     max-width: 400px;
     padding: 2rem;
     text-align: center;
@@ -229,13 +229,12 @@ footer {
     border: 1px solid #ccc;
     box-sizing: border-box;
     font-size: 1rem;
-    margin-top: 40px;
     padding: 0.5rem 15px;
     width: calc(100% - 3px);
 }
 
-.form:nth-last-child(2) input {
-    margin-top: 0;
+.form:first-of-type input{
+    margin-top: 40px;
 }
 
 
@@ -255,7 +254,6 @@ footer {
 .link__register {
     font-size: medium;
 }
-
 
 /*Footer*/
 .footer__content {
