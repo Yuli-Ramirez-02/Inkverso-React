@@ -47,6 +47,17 @@ h2 {
     text-transform: uppercase;
 }
 
+.button__blue {
+    background-color: #2980B9;
+    border-radius: 5px;
+    color: #D9D9D9;
+    font-size: 15px;
+    margin-bottom: 50px;
+    margin-top: 20px;
+    padding: 10px 40px;
+    text-transform: uppercase;
+}
+
 footer {
     width: 100%;
     height: 5rem;
@@ -219,9 +230,18 @@ footer {
     margin-top: 90px;
 }
 
+.container__form:first-of-type  .form{
+    margin-top: 50px;
+}
+
 .form {
     margin-bottom: 2rem;
     text-align: center;
+}
+
+.form label {
+    font-weight: 500;
+    margin-bottom: auto;
 }
 
 .form input {
@@ -231,23 +251,6 @@ footer {
     font-size: 1rem;
     padding: 0.5rem 15px;
     width: calc(100% - 3px);
-}
-
-.form:first-of-type input{
-    margin-top: 40px;
-}
-
-
-.button__login {
-    background-color: #2980B9;
-    border-radius: 5px;
-    color: #D9D9D9;
-    font-size: 15px;
-    margin-bottom: 50px;
-    margin-top: 20px;
-    padding: 10px 40px;
-    text-transform: uppercase;
-
 }
 
 .link__recover,

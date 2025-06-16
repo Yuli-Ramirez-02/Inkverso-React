@@ -49,7 +49,7 @@ function Login() {
                         />
                     </div>
 
-                    <button type='submit' className='button__login'>Ingresar</button>
+                    <button type='submit' className='button__login button__blue'>Ingresar</button>
                 </form>
 
                 <p>¿Olvidaste tu contraseña?<Link to="/Recuperar" className='link__recover'>Recuperala</Link></p>

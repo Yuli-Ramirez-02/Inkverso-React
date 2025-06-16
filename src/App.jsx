@@ -22,6 +22,8 @@ import Register from "./pages/Registro";
 
 import Recover from "./pages/Recuperar";
 
+import ModifyAddress from "./pages/Modificar-direccion";
+
 
 function App() {
   return (
@@ -44,12 +46,15 @@ function App() {
         /**Login */
         <Route path="/login" element={<Login />} />
 
-        /**Register */
+        /**Registro */
         <Route path="/Registro" element={<Register />} />
 
         /**Recuperar */
         <Route path="/Recuperar" element={<Recover />}/>
-        
+
+        /**Modificar direccion */
+        <Route path="/Modificar-direccion" element={<ModifyAddress />}/>
+
       </Routes>
     </Router>
   );

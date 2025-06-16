@@ -114,7 +114,7 @@ function Register() {
                         />
                     </div>
 
-                    <button type='submit' className='button__login'>Crear Cuenta</button>
+                    <button type='submit' className='button__create button__blue'>Crear Cuenta</button>
                 </form>
 
                 <p>¿Ya te registrate?<Link to="/Login" className='link__recover'>Inicia Sesion</Link></p>

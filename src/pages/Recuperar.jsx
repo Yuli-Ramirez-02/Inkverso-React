@@ -38,7 +38,7 @@ function Recover() {
                     <div className='form'>
                         <label htmlFor='confirmPassword'></label>
                         <input
-                            type='confirmPassword'
+                            type='password'
                             id='confirmPassword'
                             name='confirmPassword'
                             value={confirmPassword}
@@ -50,10 +50,10 @@ function Recover() {
                         />
                     </div>
 
-                                        <div className='form'>
+                    <div className='form'>
                         <label htmlFor='newPassword'></label>
                         <input
-                            type='newPassword'
+                            type='password'
                             id='newPassword'
                             name='newPassword'
                             value={newPassword}
@@ -65,7 +65,7 @@ function Recover() {
                         />
                     </div>
 
-                    <button type='submit' className='button__login'>Reestablecer</button>
+                    <button type='submit' className='button__restore button__blue'>Reestablecer</button>
                 </form>
 
                 <p>¿Ya tienes cuenta?<Link to="/Login" className='link__register'>Inicia Sesion</Link></p>
