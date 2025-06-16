@@ -24,6 +24,8 @@ import Recover from "./pages/Recuperar";
 
 import ModifyAddress from "./pages/Modificar-direccion";
 
+import ConfirmAddress from "./pages/Confirmar-direccion";
+
 
 function App() {
   return (
@@ -54,6 +56,9 @@ function App() {
 
         /**Modificar direccion */
         <Route path="/Modificar-direccion" element={<ModifyAddress />}/>
+
+        /**Confirmar direccion */
+        <Route path="/Confirmar-direccion" element={<ConfirmAddress />}/>
 
       </Routes>
     </Router>

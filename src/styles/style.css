@@ -47,15 +47,24 @@ h2 {
     text-transform: uppercase;
 }
 
-.button__blue {
-    background-color: #2980B9;
+.button__blue,
+.button__grey {
     border-radius: 5px;
-    color: #D9D9D9;
     font-size: 15px;
-    margin-bottom: 50px;
     margin-top: 20px;
     padding: 10px 40px;
     text-transform: uppercase;
+}
+
+.button__blue {
+    background-color: #2980B9;
+    color: #D9D9D9;
+}
+
+.button__grey {
+    background-color: #FFFFF0;
+    font-weight: 600;
+    margin-bottom: 50px;
 }
 
 footer {
@@ -256,6 +265,12 @@ footer {
 .link__recover,
 .link__register {
     font-size: medium;
+}
+
+/**/
+.title__home {
+    color: #2980B9;
+    font-size: xx-large;
 }
 
 /*Footer*/
