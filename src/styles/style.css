@@ -267,10 +267,16 @@ footer {
     font-size: medium;
 }
 
-/**/
 .title__home {
     color: #2980B9;
     font-size: xx-large;
+}
+
+/*Perfil*/
+.img__profile {
+    max-width: 70px;
+    display: block;
+    margin: 0 auto;
 }
 
 /*Footer*/
