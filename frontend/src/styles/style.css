@@ -1,0 +1,375 @@
+/*Globales*/
+body {
+    background-color: #FFFFF0;
+    font-family: 'display';
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    border-radius: 1rem;
+    border: none;
+    cursor: pointer;
+    font-family: 'monserrat', sans-serif;
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+}
+
+img {
+    background-size: cover;
+    display: block;
+    width: 100%;
+}
+
+nav {
+    background-color: #AED6F1;
+    padding: .8rem;
+}
+
+a {
+    color: #000000;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+h1 {
+    color: #FFFFFF;
+    font-family: 'display';
+    margin: 0;
+}
+
+h2 {
+    color: #000000;
+    font-family: 'display';
+    font-size: 4rem;
+    font-weight: 500;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.button__blue,
+.button__grey {
+    border-radius: 5px;
+    font-size: 15px;
+    margin-top: 20px;
+    padding: 10px 40px;
+    text-transform: uppercase;
+}
+
+.button__blue {
+    background-color: #2980B9;
+    color: #D9D9D9;
+}
+
+.button__grey {
+    background-color: #FFFFF0;
+    font-weight: 600;
+    margin-bottom: 50px;
+}
+
+footer {
+    width: 100%;
+    height: 5rem;
+    background-color: #2980B9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 0 2rem;
+}
+
+/* Header */
+.header {
+    height: 18rem; 
+    overflow: hidden;
+    position: relative;
+}
+
+.header__img {
+    background-size: cover; 
+    height: 100%;
+    width: 100%;
+}
+
+.div__inkverso {
+    position: absolute;
+    font-size: 3rem;
+    left: 5rem;
+    top: 3rem;
+    z-index: 2;
+}
+
+.div__offer {    
+    background-color: #CD6155;
+    color: #FFFFFF;
+    left: 7.5rem;
+    position: absolute;
+    top: 9.5rem;
+    transition: background-color 0.3s ease;
+    z-index: 2;
+}
+
+.div__offer:hover {
+    background-color: #A93226;
+}
+
+/*Nav*/
+.entry {
+    position: absolute;
+    display: flex;
+    gap: 4rem;
+    right: 10rem;
+    top: 1rem;
+    z-index: 10;
+}
+
+.entry__button {
+    background-color: #fdfcfc7a;
+    border: 2px solid #2980B9;
+    color: #000000;
+}
+
+.bar {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.search__bar {
+    padding: 0.8rem 1.2rem;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 1.5rem;
+    border: 1px solid #000;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.search__icon {
+    width: 24px;
+    height: 24px;
+    margin-left: -2.5rem;
+}
+
+.link {
+    align-items: center;
+    color: #000000;
+    display: flex;
+    font-size: 2rem;
+    justify-content: space-around;
+    margin-right: 10rem;
+    width: 100%;
+}
+
+.link__separator {
+    background-color: #D9D9D9;
+    color: #D9D9D9;
+    padding: .1rem;
+}
+
+.offers {
+    display: flex;
+
+    span {
+        height: 10px;
+        display: flex;
+        background-color: #000000;   
+    }
+}
+
+.section {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.section div {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.section__img--category {
+    border-radius: 50%;
+    height: 7rem;
+    width: 6rem;
+}
+
+/*Login y registro*/
+.background {
+    align-items: center;
+    background-image: url('src/assets/Imagen de fondo.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    height: auto;
+    max-width: 400px;
+    padding: 2rem;
+    text-align: center;
+    width: 100%;
+}
+
+.container__form h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 90px;
+}
+
+.container__form:first-of-type  .form{
+    margin-top: 50px;
+}
+
+.form {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.form label {
+    font-weight: 500;
+    margin-bottom: auto;
+}
+
+.form input {
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 1rem;
+    padding: 0.5rem 15px;
+    width: calc(100% - 3px);
+}
+
+.link__recover,
+.link__register {
+    font-size: medium;
+}
+
+.title__home {
+    color: #2980B9;
+    font-size: xx-large;
+}
+
+/*Perfil*/
+.img__profile {
+    max-width: 70px;
+    display: block;
+    margin: 0 auto;
+}
+
+/*Footer*/
+.footer__content {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+}
+
+.footer__div {
+    padding: 1rem 1rem;
+}
+
+.footer__inkverso {
+    font-size: 3rem;
+}
+
+.icons {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.icons img {
+    width: 2rem;
+    height: 2rem;
+}
+
+/* Responsividad */
+@media (max-width: 400px) {
+    .div__inkverso {
+        top: 6.5rem;
+    }
+
+    .div__offer {
+        top: 12rem;
+    }
+
+    .entry__button--register {
+        right: 12rem;
+    }
+
+    .entry__button--into {
+        right: 2rem;
+    }
+
+    .search__bar {
+        flex-direction: column;
+        gap: 1rem;
+        margin-left: 0;
+        padding: .9rem 2rem;
+    }
+
+    .footer__content {
+        align-items: center;        
+        width: 100%;
+    }
+
+    .footer__inkverso {
+        font-size: 2rem;
+    }
+
+    .icons {
+        padding: 0;
+    }
+
+    .section__img--category {
+        border-radius: 50%;
+        height: 8rem;
+        width: 5rem;
+    }
+
+    .categories__title {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .entry {
+        right: 2rem;
+    }
+    
+    .bar {
+        flex-direction: column;
+        gap: 1rem;        
+    }
+
+    .search__icon {
+        left: -4rem;
+    }
+
+    .link {
+        margin: 1rem;
+    }
+}
