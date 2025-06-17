@@ -22,7 +22,7 @@ function Perfil() {
             <div className='container'>
                 <form className="container__form" onSubmit={handleSubmit}>
                     <h2>Mi Perfil</h2>
-                    <img  className='img__profile' src='/assets/bx-user-pin.svg'></img>
+                    <img  className='img__profile' src='src/assets/bx-user-pin.svg'></img>
 
 
                     <div className='form'>

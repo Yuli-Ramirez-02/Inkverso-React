@@ -213,7 +213,7 @@ footer {
 /*Login y registro*/
 .background {
     align-items: center;
-    background-image: url('/assets/Imagen de fondo.jpg');
+    background-image: url('src/assets/Imagen de fondo.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

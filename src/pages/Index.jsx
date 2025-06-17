@@ -18,7 +18,7 @@ function Index() {
     return(
         <>
         <header className="header">
-        <img className="header__img" src="/assets/Imagen de fondo grande.png" alt="imagen del fondo" />
+        <img className="header__img" src="src/assets/Imagen de fondo grande.png" alt="imagen del fondo" />
 
         <div className="div">
             <h1 className="div__inkverso">INKVERSO</h1>
@@ -35,7 +35,7 @@ function Index() {
         <nav className="bar">
             <div className="search">
                 <input className="search__bar" type="text" placeholder="¿Qué libro necesitas?" />
-                <img className="search__icon" src="/assets/lupa-azul.svg" alt="lupa" />
+                <img className="search__icon" src="src/assets/lupa-azul.svg" alt="lupa" />
             </div>
 
             <div className="link">
@@ -49,31 +49,31 @@ function Index() {
             <h2 className="categories__title">categorias</h2>
             <div className="section">
                 <div>
-                    <img className="section__img--category" src="/assets/ciencia ficcion.jpg" alt="imagen ficcion"></img>
+                    <img className="section__img--category" src="src/assets/ciencia ficcion.jpg" alt="imagen ficcion"></img>
                     <Link className="section__title" to="/Ficcion">Ficción</Link>
                 </div>
                 <div>
-                    <img className="section__img--category" src="/assets/no ficcion.jpg" alt="imagen no ficcion"></img>
+                    <img className="section__img--category" src="src/assets/no ficcion.jpg" alt="imagen no ficcion"></img>
                     <Link className="section__title" to="/NoFiccion">No Ficción</Link>
                 </div>
                 <div>
-                    <img className="section__img--category" src="/assets/juvenil o infantil.jpg" alt="imagen infantil"></img>
+                    <img className="section__img--category" src="src/assets/juvenil o infantil.jpg" alt="imagen infantil"></img>
                     <Link className="section__title" to="/InfantilJuvenil">Infantil y Juvenil</Link>
                 </div>
                 <div>
-                    <img className="section__img--category" src="/assets/referencia o consulta.jpg" alt="imagen referencia"></img>
+                    <img className="section__img--category" src="src/assets/referencia o consulta.jpg" alt="imagen referencia"></img>
                     <Link className="section__title" to="/ReferenciaConsulta">Referencia y Consulta</Link>
                 </div>
                 <div>
-                    <img className="section__img--category" src="/assets/artes y humanidades.jpg" alt="imagen artes"></img>
+                    <img className="section__img--category" src="src/assets/artes y humanidades.jpg" alt="imagen artes"></img>
                     <Link className="section__title" to="/ArtesHumanidades">Artes y Humanidades</Link>
                 </div>
                 <div>
-                    <img className="section__img--category" src="/assets/educacion.jpg" alt="imagen educacion"></img>
+                    <img className="section__img--category" src="src/assets/educacion.jpg" alt="imagen educacion"></img>
                     <Link className="section__title" to="/Educacion">Educación</Link>
                 </div>
                 <div>
-                    <img className="section__img--category" src="/assets/entretenimiento.jpg" alt="imagen entretenimiento"></img>
+                    <img className="section__img--category" src="src/assets/entretenimiento.jpg" alt="imagen entretenimiento"></img>
                     <Link className="section__title" to="/Entretenimiento">Entretenimiento</Link>
                 </div>
             </div>
@@ -93,9 +93,9 @@ function Index() {
             </div>
 
             <div className="icons">
-                <img className="icons__facebook" src="/assets/logo-facebook.svg" alt="Logo Facebook" />
-                <img className="icons__instagram" src="/assets/logo-instagram.svg" alt="Logo Instagram" />
-                <img className="icons__twitter" src="/assets/logo-twitter.svg" alt="Logo Twitter" />
+                <img className="icons__facebook" src="src/assets/logo-facebook.svg" alt="Logo Facebook" />
+                <img className="icons__instagram" src="src/assets/logo-instagram.svg" alt="Logo Instagram" />
+                <img className="icons__twitter" src="src/assets/logo-twitter.svg" alt="Logo Twitter" />
             </div>
         </div>
     </footer>
