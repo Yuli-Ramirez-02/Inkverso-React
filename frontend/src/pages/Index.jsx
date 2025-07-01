@@ -1,4 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
+import Footer from "../components/Footer";
 
 function Index() {
     const navigate = useNavigate();
@@ -86,20 +87,8 @@ function Index() {
         </section>
     </main>
 
-    <footer className="footer">
-        <div className="footer__content">
-            <div className="footer__div">
-                <h1 className="footer__inkverso">INKVERSO</h1>
-            </div>
-
-            <div className="icons">
-                <img className="icons__facebook" src="src/assets/logo-facebook.svg" alt="Logo Facebook" />
-                <img className="icons__instagram" src="src/assets/logo-instagram.svg" alt="Logo Instagram" />
-                <img className="icons__twitter" src="src/assets/logo-twitter.svg" alt="Logo Twitter" />
-            </div>
-        </div>
-    </footer>
-        </>
+    <Footer/>        
+    </>
     );
 }
 
