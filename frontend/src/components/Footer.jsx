@@ -7,9 +7,9 @@ import twitterIcon from "../assets/logo-twitter.svg";
 function Footer() {
     return (
         <footer className="footer blue__bar">
-            <div className="footer__content">
-                <div className="footer__div">
-                    <h1 className="footer__inkverso">INKVERSO</h1>
+            <div className="footer__content bar__content">
+                <div className="footer__div div__content">
+                    <h1 className="title__inkverso">INKVERSO</h1>
                 </div>
 
                 <div className="icons">

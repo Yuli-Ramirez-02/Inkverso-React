@@ -1,9 +1,15 @@
+import "../styles/style.css"
+import HeaderBlue from "../components/HeaderBlue";
+import Footer from "../components/Footer";
+import Filter from "../components/Filter";
+
 function Ficcion() {
     return (
-        <div>
-            <h2>Libros de Ficción</h2>
-            {/* Aquí irían las tarjetas de libros */}
-        </div>
+        <>
+        <HeaderBlue/>        
+        <Filter/>
+        <Footer/>
+        </>
     );
 }
 

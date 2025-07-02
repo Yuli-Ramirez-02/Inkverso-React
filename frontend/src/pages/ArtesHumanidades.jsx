@@ -1,9 +1,15 @@
+import "../styles/style.css"
+import HeaderBlue from "../components/HeaderBlue";
+import Footer from "../components/Footer";
+import Filter from "../components/Filter";
+
 function ArtesHumanidades() {
     return (
-        <div>
-            <h1>Libros de Artes y Humanidades</h1>
-            {/* Aquí irían las tarjetas de libros */}
-        </div>
+        <>
+        <HeaderBlue/>
+        <Filter/>
+        <Footer/>
+        </>
     );
 }
 

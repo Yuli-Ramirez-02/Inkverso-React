@@ -1,10 +1,17 @@
-function NoFiccion() {
-    return (
-        <div>
-            <h1>Libros de No Ficción</h1>
-            {/* Aquí irían las tarjetas de libros */}
-        </div>
+import "../styles/style.css"
+import HeaderBlue from "../components/HeaderBlue";
+import Footer from "../components/Footer";
+import Filter from "../components/Filter";
+
+function noFiccion() {
+    return(
+        <>
+        <HeaderBlue/>        
+        <Filter/>
+
+        <Footer/>
+        </>
     );
 }
 
-export default NoFiccion;
+export default noFiccion;

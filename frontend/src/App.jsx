@@ -38,10 +38,10 @@ function App() {
 
         /** Categorias */
         <Route path="/ficcion" element={<Ficcion />} />
-        <Route path="/no-ficcion" element={<NoFiccion />} />
-        <Route path="/infantil-juvenil" element={<InfantilJuvenil />} />
-        <Route path="/referencia-consulta" element={<ReferenciaConsulta />} />
-        <Route path="/artes-humanidades" element={<ArtesHumanidades />} />
+        <Route path="/NoFiccion" element={<NoFiccion />} />
+        <Route path="/InfantilJuvenil" element={<InfantilJuvenil />} />
+        <Route path="/ReferenciaConsulta" element={<ReferenciaConsulta />} />
+        <Route path="/ArtesHumanidades" element={<ArtesHumanidades />} />
         <Route path="/educacion" element={<Educacion />} />
         <Route path="/entretenimiento" element={<Entretenimiento />} />
 

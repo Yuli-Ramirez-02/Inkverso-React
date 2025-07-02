@@ -369,7 +369,7 @@ h2 {
 }
 
 /*Footer*/
-.footer__content {
+.bar__content {
     width: 100%;
     max-width: 1200px;
     display: flex;
@@ -377,11 +377,11 @@ h2 {
     justify-content: space-between; 
 }
 
-.footer__div {
+.div__content {
     padding: 1rem 1rem;
 }
 
-.footer__inkverso {
+.title__inkverso {
     font-size: 3rem;
 }
 
