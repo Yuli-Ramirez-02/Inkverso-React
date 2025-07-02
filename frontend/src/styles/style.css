@@ -279,6 +279,95 @@ h2 {
     margin: 0 auto;
 }
 
+/*Filtro*/
+.filter {
+    background-color: #AED6F1;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: fit-content;
+    margin: 5rem;
+    padding: 1rem;
+    width: 280px;
+}
+
+.group__filter {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.8rem;
+    gap: 0.4rem;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    padding: 0.5rem;
+}
+
+.header__filter {
+    align-items: center;
+    background-color: transparent;
+    border: none; 
+    cursor: pointer;
+    display: flex;
+    font-size: 1.3rem;
+    gap: 1rem; 
+    justify-content: center; 
+    margin: 0;
+    padding: 0.4rem 0;
+    width: 100%;
+}
+
+.icons__filter {
+    width: 2rem;
+    height: 2rem;
+}
+
+.title__filter {
+    color: #000000;
+    font-size: 1.6rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    margin-top: 0;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.select__filter {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    gap: 0.5rem;  
+}
+
+.filtro__select li {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.opcion__filter {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    background-color: #fff;
+    border: 1px solid #000; 
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%; 
+    text-align: center;
+    transition: background-color 0.2s ease;
+}
+
+.opcion__filter:hover {
+    background-color: #D6EAF8; 
+}
+
+.select__filter[type="range"] { 
+    width: 90%; 
+    margin: 0 auto; 
+    padding: 0.5rem 0;
+    box-sizing: border-box; 
+}
+
 /*Footer*/
 .footer__content {
     width: 100%;
@@ -371,5 +460,9 @@ h2 {
 
     .link {
         margin: 1rem;
+    }
+
+    .filter {
+        margin: 3rem;
     }
 }

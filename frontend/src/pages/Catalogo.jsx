@@ -1,18 +1,11 @@
 import "../styles/style.css"
 import Footer from "../components/Footer";
+import Filter from "../components/Filter";
 
 import { useState, useEffect } from "react";
 
 function Catalogo() {
-    const [libros, setLibros] = useState([]);
-
-    useEffect(() => {
-        fetch("http://localhost:3001/api/libros")
-        .then((res) => res.json())
-        .then((data) => setLibros(data))
-        .catch((err) => console.error('Error en los libros:', err));
-    }, [])
-
+    
     return (
         <>
         <div>
@@ -29,35 +22,7 @@ function Catalogo() {
             </div>
         </div>
 
-        <div>
-            <aside>
-                <h3>filtros</h3>
-
-                <div>
-                    <label>Categoría</label>
-                    <select>
-                        <option value=''>Todos</option>
-                        <option value=''>Ficcion</option>
-                        <option value=''>No Ficcion</option>
-                        <option value=''>Infantil y Juvenil</option>
-                        <option value=''>Referencia y consulta</option>
-                        <option value=''>Artes y humanidades</option>
-                        <option value=''>Educacion</option>
-                        <option value=''>Entrenimiento</option>
-                    </select>
-                </div>
-
-                <div>
-                    <label>Autor</label>
-                    <input type="text" placeholder="Buscar autor" />
-                </div>
-
-                <div>
-                    <label>Precio máximo</label>
-                    <input type="number" placeholder="Ej: 50000" />
-                </div>
-            </aside>
-        </div>
+        <Filter/>
 
         <Footer/>
         </>
