@@ -483,6 +483,9 @@ h2 {
 
 .title__inkverso {
     font-size: 3rem;
+    color: #FFFFFF;
+    font-family: 'display';
+    margin: 0;
 }
 
 .icons {

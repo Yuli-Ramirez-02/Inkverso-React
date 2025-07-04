@@ -1,4 +1,5 @@
 import "../styles/style.css"; 
+import { Link } from "react-router-dom";
 import facebookIcon from "../assets/logo-facebook.svg";
 import instagramIcon from "../assets/logo-instagram.svg";
 import twitterIcon from "../assets/logo-twitter.svg";
@@ -9,7 +10,7 @@ function Footer() {
         <footer className="footer blue__bar">
             <div className="footer__content bar__content">
                 <div className="footer__div div__content">
-                    <h1 className="title__inkverso">INKVERSO</h1>
+                    <Link  to="/" className="title__inkverso">INKVERSO</Link>
                 </div>
 
                 <div className="icons">

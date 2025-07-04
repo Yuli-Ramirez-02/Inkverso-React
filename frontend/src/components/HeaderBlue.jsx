@@ -1,4 +1,6 @@
 import "../styles/style.css"; 
+import { Link } from "react-router-dom";
+
 
 function HeaderBlue() {
     return(
@@ -7,7 +9,7 @@ function HeaderBlue() {
             <div className="blue__bar">
                     <div className="bar__content">
                         <div className="div__content">
-                            <h1 className="title__inkverso">INKVERSO</h1>
+                            <Link  to="/" className="title__inkverso">INKVERSO</Link>
                         </div>
 
                         <div className="icons">
