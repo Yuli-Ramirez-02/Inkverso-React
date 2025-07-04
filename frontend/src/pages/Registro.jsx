@@ -1,5 +1,5 @@
 import React, { use, useState } from 'react';
-import { Link } from 'react-router-dom'; // Para volver al inicio si lo necesitas
+import { Link } from 'react-router-dom'; // Para volver al inicio
 import '../styles/style.css';
 
 function Register() {
@@ -10,17 +10,44 @@ function Register() {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
+    const [mensajeExito, setMensajeExito] = useState(false);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
     e.preventDefault();
 
-        console.log('Nombre:', name);
-        console.log('Apellido:', lastname);
-        console.log('Dirección:', address);
-        console.log('Correo:', email);
-        console.log('Contraseña:', password);
-        console.log('Confirmación Contraseña:', confirmPassword);
+    if (password !== confirmPassword) {
+        alert("Las contraseñas no coinciden");        
+        return;
     }
+
+    try {
+        const res = await fetch("http://localhost:5000/api/register", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            nombre: name,
+            apellido: lastname,
+            direccion: address,
+            email,
+            password
+        })
+    });
+
+    const data = await res.json();
+
+    if (data.ok) {
+        setMensajeExito(true); 
+    } else {
+        alert(data.error || "Error en el registro");
+    }
+    } catch (error) {
+        console.error("Error en el registro:", error);
+        alert("Error en el servidor");
+    }
+    };
+
 
     return (
         <div className='background'>
@@ -116,6 +143,21 @@ function Register() {
 
                     <button type='submit' className='button__create button__blue'>Crear Cuenta</button>
                 </form>
+
+                {mensajeExito && (
+                <div className="modal__overlay">
+                    <div className="modal__content">
+                        <button className="modal__close" onClick={() => setMensajeExito(false)}>✖</button>
+
+                        <img src='/src/assets/bxs-check-circle.svg' className='icono_check'></img>
+                        
+                        <div className="modal__text">
+                            <h3>Tu cuenta fue creada exitosamente.</h3>
+                            <p>Revisa tu correo para verificar tu cuenta.</p>
+                        </div>
+                    </div>
+                </div>
+                )}
 
                 <p>¿Ya te registrate?<Link to="/Login" className='link__recover'>Inicia Sesion</Link></p>
             </div>
