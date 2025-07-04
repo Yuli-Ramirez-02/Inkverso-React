@@ -387,7 +387,8 @@ h2 {
 }
 
 .libro__card {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     align-items: flex-start;
     background-color: #fff;
     border: 1px solid #ccc;
@@ -395,13 +396,13 @@ h2 {
     padding: 1rem;
     width: 85%;
     max-width: 800px;
-    gap: 5rem;
+    gap: 2rem;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
 .libro__img {
-    width: 100px;
-    height: 200px;
+    width: 140px;
+    height: 210px;
     object-fit: cover;
     border-radius: 0.5rem;
 }

@@ -18,7 +18,7 @@ function Catalog() {
             {libros.map((libro) => (
                 <div key={libro.id} className="libro__card">
                     <img
-                        src={libro.imagen_url || "/assets/default-book.png"}
+                        src={`/assets/libros/${libro.id}.jpg`}
                         alt={libro.titulo}
                         className="libro__img"
                     />
