@@ -19,6 +19,7 @@ import Entretenimiento from "./pages/Entretenimiento";
 import Login from "./pages/Login";
 
 import Register from "./pages/Registro";
+import Verificar from "./pages/Verificar";
 
 import Recover from "./pages/Recuperar";
 
@@ -50,6 +51,7 @@ function App() {
 
         /**Registro */
         <Route path="/Registro" element={<Register />} />
+        <Route path="/verificar" element={<Verificar />} />
 
         /**Recuperar */
         <Route path="/Recuperar" element={<Recover />}/>

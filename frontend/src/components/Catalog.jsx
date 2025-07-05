@@ -1,9 +1,12 @@
 import "../styles/style.css"
 import { useEffect, useState } from "react";
+import { useLocation } from 'react-dom'
 
 
 function Catalog() {
     const [libros, setLibros] = useState([]);
+    const usuario = JSON.parse(localStorage.getItem("usuario"));
+    const estaAutenticado = usuario?.autenticado;
 
     useEffect(() => {
         fetch("http://localhost:5000/api/libros")
