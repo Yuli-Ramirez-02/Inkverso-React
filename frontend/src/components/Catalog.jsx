@@ -1,7 +1,5 @@
 import "../styles/style.css"
 import { useEffect, useState } from "react";
-import { useLocation } from 'react-dom'
-
 
 function Catalog() {
     const [libros, setLibros] = useState([]);

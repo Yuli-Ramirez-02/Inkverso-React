@@ -1,13 +1,17 @@
 import "../styles/style.css"
 import HeaderBlue from "../components/HeaderBlue";
 import Footer from "../components/Footer";
+import Catalog from "../components/Catalog";
 import Filter from "../components/Filter";
 
 function Entretenimiento() {
     return (
         <>
         <HeaderBlue/>
-        <Filter/>
+        <div className="catalog__layout">
+            <Filter/>
+            <Catalog/>
+        </div>
         <Footer/>
         </>
     );

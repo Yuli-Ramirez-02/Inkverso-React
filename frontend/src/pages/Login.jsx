@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { useAuth } from "../context/AuthContext";
 import { Link, useNavigate } from 'react-router-dom'; // Para volver al inicio
 import '../styles/style.css';
 
@@ -6,13 +7,41 @@ function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
+    const { login } = useAuth();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault(); //Para evitar el comportamiento por defecto del formulario de recargar la pagina
+
+        try {
+            const res = await fetch("http://localhost:5000/api/login", {
+                method: "POST",
+                headers: { "Content-type" : "application/json"  },
+                body: JSON.stringify({ email: username, password })
+            });
+
+            const data = await res.json();
+
+            if(data.ok) {
+                //Guardamos el usuario autenticado en LocalStorage
+                login({ ...data.usuario, autenticado: true });
+
+            // Redirigir al inicio
+            navigate("/");
+
+            // Forzar recarga para que Header se actualice visualmente
+            window.location.reload();
+
+            } else {
+                alert(data.mensaje || "Credenciales invalidas");
+            }
+        } catch(error) {
+            console.error("Error en login:", error);
+            alert("Error en el servidor");
+        }
     
         console.log('Usuario:', username);
         console.log('Contraseña:', password);
-    }
+    };
 
     return (
         <div className='background'>

@@ -1,36 +1,16 @@
 import { Link, useNavigate } from "react-router-dom";
+import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 function Index() {
     const navigate = useNavigate();
 
     //Funcion para el boton ingresar
-    const handleIngresarClick = () => {
-        //Logica
-        navigate('/login');
-    }
 
-    //Funcion para el boton registrate
-    const handleRegistrateClick = () => {
-        //Logica
-        navigate('/Registro')
-    }
 
     return(
         <>
-        <header className="header">
-        <img className="header__img" src="src/assets/Imagen de fondo grande.png" alt="imagen del fondo" />
-
-        <div className="div">
-            <h1 className="div__inkverso">INKVERSO</h1>
-            <button className="div__offer">OFERTAS</button>
-        </div>
-
-        <div className="entry">
-            <button className="entry__button entry__button--register" onClick={handleRegistrateClick}>Registrate</button>
-            <button className="entry__button entry__button--into" onClick={handleIngresarClick}>Ingresar</button>
-        </div>
-    </header>
+    <Header/>
 
     <main className="main">
         <nav className="bar">

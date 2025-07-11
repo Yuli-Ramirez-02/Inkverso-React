@@ -12,7 +12,6 @@ function Catalogo() {
 
         <div className="catalog__layout">
             <Filter/>
-
             <Catalog/>
         </div>
 

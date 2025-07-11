@@ -1,5 +1,6 @@
 import React, { use, useState } from 'react';
 import { Link } from 'react-router-dom'; // Para volver al inicio
+import { useAuth } from '../context/AuthContext';
 import '../styles/style.css';
 
 function Register() {
@@ -11,6 +12,8 @@ function Register() {
     const [confirmPassword, setConfirmPassword] = useState('');
 
     const [mensajeExito, setMensajeExito] = useState(false);
+
+    const { login } = useAuth();
 
     const handleSubmit = async (e) => {
     e.preventDefault();
@@ -38,7 +41,8 @@ function Register() {
     const data = await res.json();
 
     if (data.ok) {
-        setMensajeExito(true); 
+        login({ email: email, autenticado: true }); // lo guarda en localStorage 
+        setMensajeExito(true);
     } else {
         alert(data.error || "Error en el registro");
     }

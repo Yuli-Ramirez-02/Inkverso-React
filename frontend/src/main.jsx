@@ -1,13 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App.jsx';
-
-// Importa estilos globales (si tienes un index.css y un style.css)
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
 import './styles/style.css';
+import { AuthProvider } from "./context/AuthContext";
 
-// Renderiza la app en el root del HTML
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <App />
+    <AuthProvider>
+      <App />
+    </AuthProvider>
   </React.StrictMode>
 );
