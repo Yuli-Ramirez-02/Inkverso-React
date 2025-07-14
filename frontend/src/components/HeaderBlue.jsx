@@ -41,23 +41,35 @@ function HeaderBlue() {
                 ) : (
                     <>
                 {cart.map((item) => (
-                    <div key={item.id} className="carrito__item">
-                        <img src={`/assets/libros/${item.id}.jpg`} alt={item.titulo} className="carrito__img"/>
-                        
-                        <div className="carrito__info">
-                            <p className="carrito__titulo">{item.titulo}</p>
-                            <p className="carrito__autor">{item.autor}</p>
-                            {item.oferta ? (
-                                <p className="carrito__precio">
-                                    <span className="tachado">${item.precio}</span> ${item.precio_oferta}
-                                </p>
-                                ) : (
-                                <p className="carrito__precio">${item.precio}</p>
-                            )}
+                <div key={item.id} className="carrito__item">
+                    <img src={`/assets/libros/${item.id}.jpg`} alt={item.titulo} className="carrito__img" />
 
-                            {/* Aquí irá el control de cantidad y la X para eliminar */}
+                    <div className="carrito__info">
+                        <p className="carrito__titulo">{item.titulo}</p>
+                        <p className="carrito__autor">{item.autor}</p>
+                        <p className="carrito__precio">
+                            {item.oferta ? `$${item.precio_oferta}` : `$${item.precio}`}
+                        </p>
+
+                        <div className="carrito__cantidad">
+                            <button onClick={() =>
+                                updateCantidad(item.id, item.cantidad - 1, item.inventario)
+                            }> - 
+                            </button>
+
+                            <span>{item.cantidad}</span>
+
+                            <button onClick={() =>
+                                updateCantidad(item.id, item.cantidad + 1, item.inventario)
+                            } disabled={item.cantidad >= item.inventario}> +
+                            </button>
                         </div>
                     </div>
+
+                    <button className="carrito__eliminar" onClick={() => removeFromCart(item.id)}>
+                    ✖
+                    </button>
+                </div>
                 ))}
 
                     <p className="total"><strong>Total: ${total}</strong></p>

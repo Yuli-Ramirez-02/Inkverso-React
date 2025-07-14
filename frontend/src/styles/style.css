@@ -564,13 +564,17 @@ h2 {
 
 .carrito__item {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
     gap: 1rem;
     margin-bottom: 1rem;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 0.5rem;
 }
 
 .carrito__img {
-    width: 60px;
-    height: 90px;
+    width: 70px;
+    height: 110px;
     object-fit: cover;
     border-radius: 4px;
 }
@@ -594,9 +598,31 @@ h2 {
     margin-bottom: 0;
 }
 
+.carrito__info {
+    flex: 1;
+}
 
 .carrito__info p {
     margin: 0.2rem 0;
+}
+
+.carrito__cantidad {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.carrito__cantidad button {
+    padding: 0.2rem 0.6rem;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.carrito__eliminar {
+    background: none;
+    border: none;
+    font-size: 1.3rem;
+    cursor: pointer;
 }
 
 .carrito__acciones {
