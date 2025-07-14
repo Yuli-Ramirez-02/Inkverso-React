@@ -1,10 +1,12 @@
-import "../styles/style.css"
+import "../styles/style.css";
+import { useCart } from "../context/CartContext";
 import { useEffect, useState } from "react";
 
 function Catalog() {
     const [libros, setLibros] = useState([]);
     const usuario = JSON.parse(localStorage.getItem("usuario"));
     const estaAutenticado = usuario?.autenticado;
+    const { addToCart } = useCart();
 
     useEffect(() => {
         fetch("http://localhost:5000/api/libros")
@@ -45,7 +47,9 @@ function Catalog() {
                             <input type="radio" name={`formato-${libro.id}`} value="virtual" /> Virtual
                             </label>
                         </div>
-                        <button className="libro__boton">Comprar</button>
+                        <button className="libro__boton" onClick={() => addToCart(libro)}>
+                            Comprar
+                        </button>
                         </div>
                     </div>
                 </div>

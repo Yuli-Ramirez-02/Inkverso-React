@@ -8,7 +8,11 @@ function HeaderBlue() {
     const { cart } = useCart();
     const [mostrarCarrito, setMostrarCarrito] = useState(false);
 
-    const total = cart.reduce((acc, item) => acc + item.precio * (item.cantidad || 1), 0);
+    const total = cart.reduce((acc, item) => {
+        const precio = item.oferta ? item.precio_oferta : item.precio;
+        return acc + precio * (item.cantidad || 1);
+    }, 0);
+
 
     return(
         <>
@@ -33,7 +37,7 @@ function HeaderBlue() {
         {mostrarCarrito && (
             <div className="carrito__resumen">
                 {cart.length === 0 ? (
-                    <p>Item</p>
+                    <p>Item 0</p>
                 ) : (
                     <>
                 {cart.map((item) => (
@@ -43,17 +47,23 @@ function HeaderBlue() {
                         <div className="carrito__info">
                             <p className="carrito__titulo">{item.titulo}</p>
                             <p className="carrito__autor">{item.autor}</p>
-                            <p className="carrito__precio">${item.precio}</p>
+                            {item.oferta ? (
+                                <p className="carrito__precio">
+                                    <span className="tachado">${item.precio}</span> ${item.precio_oferta}
+                                </p>
+                                ) : (
+                                <p className="carrito__precio">${item.precio}</p>
+                            )}
 
                             {/* Aquí irá el control de cantidad y la X para eliminar */}
                         </div>
                     </div>
                 ))}
 
-                    <p><strong>Total: ${total}</strong></p>
+                    <p className="total"><strong>Total: ${total}</strong></p>
                     <div className="carrito__acciones">
-                        <button>Pagar</button>
-                        <button>Vaciar</button>
+                        <button className="button__blue">Pagar</button>
+                        <button className="button__grey">Vaciar</button>
                     </div>
                     </>
                 )}
