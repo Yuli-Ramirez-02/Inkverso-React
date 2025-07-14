@@ -1,8 +1,15 @@
 import "../styles/style.css"; 
 import { Link } from "react-router-dom";
+import { useCart } from "../context/CartContext";
+import { useState } from "react";
 
 
 function HeaderBlue() {
+    const { cart } = useCart();
+    const [mostrarCarrito, setMostrarCarrito] = useState(false);
+
+    const total = cart.reduce((acc, item) => acc + item.precio * (item.cantidad || 1), 0);
+
     return(
         <>
         <div>
@@ -13,11 +20,45 @@ function HeaderBlue() {
                         </div>
 
                         <div className="icons">
-                            <img className="icons__cart" src="src/assets/bx-cart.svg" alt="Logo Facebook" />
+                            <div className="cart__icon--wrapper">
+                            <img className="icons__cart" src="src/assets/bx-cart.svg" alt="Logo Facebook" 
+                            onClick={() => setMostrarCarrito(!mostrarCarrito)}/>
+                            {cart.length > 0 && <span className="cart__count">{cart.length}</span>}
+                            </div>
                         </div>
                     </div>
             </div>
         </div>
+
+        {mostrarCarrito && (
+            <div className="carrito__resumen">
+                {cart.length === 0 ? (
+                    <p>Item</p>
+                ) : (
+                    <>
+                {cart.map((item) => (
+                    <div key={item.id} className="carrito__item">
+                        <img src={`/assets/libros/${item.id}.jpg`} alt={item.titulo} className="carrito__img"/>
+                        
+                        <div className="carrito__info">
+                            <p className="carrito__titulo">{item.titulo}</p>
+                            <p className="carrito__autor">{item.autor}</p>
+                            <p className="carrito__precio">${item.precio}</p>
+
+                            {/* Aquí irá el control de cantidad y la X para eliminar */}
+                        </div>
+                    </div>
+                ))}
+
+                    <p><strong>Total: ${total}</strong></p>
+                    <div className="carrito__acciones">
+                        <button>Pagar</button>
+                        <button>Vaciar</button>
+                    </div>
+                    </>
+                )}
+            </div>
+        )}
         </>
     );
 }
