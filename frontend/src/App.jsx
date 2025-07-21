@@ -27,6 +27,8 @@ import ModifyAddress from "./pages/Modificar-direccion";
 
 import ConfirmAddress from "./pages/Confirmar-direccion";
 
+import Pago from "./pages/Pago";
+
 
 function App() {
   return (
@@ -62,6 +64,8 @@ function App() {
         /**Confirmar direccion */
         <Route path="/Confirmar-direccion" element={<ConfirmAddress />}/>
 
+        /**Pago */
+        <Route path="/Pago" element={<Pago />}/>
       </Routes>
     </Router>
   );

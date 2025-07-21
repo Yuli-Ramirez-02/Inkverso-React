@@ -1,18 +1,13 @@
 import "../styles/style.css"; 
-import { Link } from "react-router-dom";
-import { useCart } from "../context/CartContext";
 import { useState } from "react";
-
+import { Link } from "react-router-dom";
+import cartIcon from "../assets/bx-cart.svg";
+import CartDropdown from "./CartDropdown";
+import { useCart } from "../context/CartContext";
 
 function HeaderBlue() {
-    const { cart } = useCart();
     const [mostrarCarrito, setMostrarCarrito] = useState(false);
-
-    const total = cart.reduce((acc, item) => {
-        const precio = item.oferta ? item.precio_oferta : item.precio;
-        return acc + precio * (item.cantidad || 1);
-    }, 0);
-
+    const {cart} = useCart();
 
     return(
         <>
@@ -25,62 +20,23 @@ function HeaderBlue() {
 
                         <div className="icons">
                             <div className="cart__icon--wrapper">
-                            <img className="icons__cart" src="src/assets/bx-cart.svg" alt="Logo Facebook" 
-                            onClick={() => setMostrarCarrito(!mostrarCarrito)}/>
-                            {cart.length > 0 && <span className="cart__count">{cart.length}</span>}
+                                <img
+                                    className="icons__cart"
+                                    src={cartIcon} 
+                                    alt="Icono del Carrito"
+                                    onClick={() => setMostrarCarrito(!mostrarCarrito)}
+                                />
+                                {cart.length > 0 && <span className="cart__count">{cart.length}</span>}
                             </div>
+
+                            <CartDropdown 
+                                mostrarCarrito={mostrarCarrito} 
+                                setMostrarCarrito={setMostrarCarrito}
+                            />
                         </div>
                     </div>
             </div>
         </div>
-
-        {mostrarCarrito && (
-            <div className="carrito__resumen">
-                {cart.length === 0 ? (
-                    <p>Item 0</p>
-                ) : (
-                    <>
-                {cart.map((item) => (
-                <div key={item.id} className="carrito__item">
-                    <img src={`/assets/libros/${item.id}.jpg`} alt={item.titulo} className="carrito__img" />
-
-                    <div className="carrito__info">
-                        <p className="carrito__titulo">{item.titulo}</p>
-                        <p className="carrito__autor">{item.autor}</p>
-                        <p className="carrito__precio">
-                            {item.oferta ? `$${item.precio_oferta}` : `$${item.precio}`}
-                        </p>
-
-                        <div className="carrito__cantidad">
-                            <button onClick={() =>
-                                updateCantidad(item.id, item.cantidad - 1, item.inventario)
-                            }> - 
-                            </button>
-
-                            <span>{item.cantidad}</span>
-
-                            <button onClick={() =>
-                                updateCantidad(item.id, item.cantidad + 1, item.inventario)
-                            } disabled={item.cantidad >= item.inventario}> +
-                            </button>
-                        </div>
-                    </div>
-
-                    <button className="carrito__eliminar" onClick={() => removeFromCart(item.id)}>
-                    ✖
-                    </button>
-                </div>
-                ))}
-
-                    <p className="total"><strong>Total: ${total}</strong></p>
-                    <div className="carrito__acciones">
-                        <button className="button__blue">Pagar</button>
-                        <button className="button__grey">Vaciar</button>
-                    </div>
-                    </>
-                )}
-            </div>
-        )}
         </>
     );
 }

@@ -14,9 +14,9 @@ function Footer() {
                 </div>
 
                 <div className="icons">
-                    <img className="icons__facebook" src={facebookIcon} alt="Logo Facebook" />
-                    <img className="icons__instagram" src={instagramIcon} alt="Logo Instagram" />
-                    <img className="icons__twitter" src={twitterIcon} alt="Logo Twitter" />
+                    <img className="icons__cart" src={facebookIcon} alt="Logo Facebook" />
+                    <img className="icons__cart" src={instagramIcon} alt="Logo Instagram" />
+                    <img className="icons__cart" src={twitterIcon} alt="Logo Twitter" />
                 </div>
             </div>
         </footer>
