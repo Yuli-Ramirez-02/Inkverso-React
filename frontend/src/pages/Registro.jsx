@@ -11,6 +11,7 @@ function Register() {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
+
     const [mensajeExito, setMensajeExito] = useState(false);
 
     const { login } = useAuth();
