@@ -1,4 +1,4 @@
-import React, { use, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'; // Para volver al inicio si lo necesitas
 import '../styles/style.css';
 
@@ -7,14 +7,50 @@ function Perfil() {
         const [lastname, setLastname] = useState('');
         const [address, setAddress] = useState('');
         const [email, setEmail] = useState('');
+        const [mensajeExito, setMensajeExito] = useState(false);
+        
+        const usuario = JSON.parse(localStorage.getItem("usuario"));
+
+        // Obtener datos desde la base de datos
+        useEffect(() => {
+            if (!usuario?.email) return;
+
+            fetch(`http://localhost:5000/api/usuario?email=${usuario.email}`)
+                .then(res => res.json())
+                .then(data => {
+                    setName(data.nombre || '');
+                    setLastname(data.apellido || '');
+                    setAddress(data.direccion || '');
+                    setEmail(data.email || '');
+                })
+                .catch(err => {
+                    console.error("Error al obtener perfil:", err);
+                });
+        }, [usuario]);
+            
     
-        const handleSubmit = (e) => {
+        const handleSubmit = async(e) => {
         e.preventDefault();
-    
-            console.log('Nombre:', name);
-            console.log('Apellido:', lastname);
-            console.log('Dirección:', address);
-            console.log('Correo:', email);
+        
+        try {
+            const res = await fetch("http://localhost:5000/api/usuario", {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, nombre: name, apellido: lastname, direccion: address })
+            });
+
+            const data = await res.json();
+
+            if (data.ok) {
+                setMensaje("Perfil actualizado correctamente");
+            } else {
+                alert(data.error || "No se pudo actualizar");
+            }
+
+        } catch (error) {
+            console.error("Error al actualizar perfil:", error);
+            alert("Error del servidor");
+        }
         }
     
     return (
@@ -82,6 +118,7 @@ function Perfil() {
                     </div>
 
                     <button type='submit' className='button__blue'>Actualizar</button>
+                    {mensajeExito && <p className="mensaje__exito">{mensajeExito}</p>}
                 </form>
             </div>
         </div>
