@@ -3,6 +3,8 @@ import { useCart } from "../context/CartContext";
 import { useAuth } from "../context/AuthContext";
 import { useState } from "react";
 import CartDropdown from "../components/CartDropdown";
+import Footer from "../components/Footer";
+import HeaderGlobal from "../components/HeaderGlobal";
 
 function Pago() {
     const { cart, updateCantidad, removeFromCart } = useCart();
@@ -21,12 +23,16 @@ function Pago() {
 
     return(
         <>
+        <HeaderGlobal/>
         <div className="pago__contenedor">
             {/**Columna 1 */}
-            <CartDropdown 
-                mostrarCarrito={mostrarCarrito} 
-                setMostrarCarrito={setMostrarCarrito}
-            />
+            <div className="pago__columna">
+                <h3>Resumen de la compra</h3>
+                <CartDropdown 
+                    mostrar={true}
+                    modoResumen={true}
+                />
+            </div>
             
             {/** Columna 2 */}
             <div className="pago__columna datos">
@@ -66,6 +72,8 @@ function Pago() {
                 </div>
             </div>
         </div>
+
+        <Footer/>
         </>
     )
 }

@@ -3,9 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import "../styles/style.css"; 
 
-function CartDropdown({ mostrarCarrito, setMostrarCarrito }) {
+function CartDropdown({ mostrar = true, modoResumen = false }) {
     const navigate = useNavigate();
     const { cart, updateCantidad, removeFromCart, clearCart } = useCart(); 
+    const [mostrarCarrito, setMostrarCarrito] = useState(false); 
+
 
     const total = cart.reduce((acc, item) => {
         const precio = item.oferta 
@@ -26,11 +28,11 @@ function CartDropdown({ mostrarCarrito, setMostrarCarrito }) {
         setMostrarCarrito(false);
     };
 
-    if (!mostrarCarrito) return null;
+    if (!mostrar) return null;
 
 
 return (
-        <div className="carrito__resumen">
+        <div className={`carrito__resumen ${modoResumen ? 'resumen__columna' : ''}`}>
             {cart.length === 0 ? (
                 <p>Tu carrito está vacío.</p> // Mensaje más descriptivo
             ) : (
@@ -65,11 +67,13 @@ return (
                         </div>
                     ))}
 
-                    <p className="total"><strong>Total: ${total.toFixed(2)}</strong></p>
-                    <div className="carrito__acciones">
-                        <button onClick={handleCheckout} className="button__blue">Pagar</button>
-                        <button onClick={handleClearCart} className="button__grey">Vaciar</button>
-                    </div>
+                    {/* Solo mostramos botones si NO es modo resumen */}
+                    {!modoResumen && (
+                        <div className="carrito__acciones">
+                            <button onClick={() => navigate("/pago")} className="button__blue">Pagar</button>
+                            <button onClick={clearCart} className="button__grey">Vaciar</button>
+                        </div>
+                    )}
                 </>
             )}
         </div>

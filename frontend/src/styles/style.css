@@ -656,7 +656,6 @@ h2 {
 }
 
 /*Pago*/
-/* === CONTENEDOR PRINCIPAL === */
 .pago__contenedor {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -666,7 +665,6 @@ h2 {
     margin: 0 auto;
 }
 
-/* === CADA COLUMNA === */
 .pago__columna {
     background-color: #f9f9f9;
     padding: 1.5rem;
@@ -675,38 +673,16 @@ h2 {
 }
 
 /* === RESUMEN DEL CARRITO === */
-.resumen__libro {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 1.2rem;
-    align-items: center;
-}
-
-.resumen__libro img {
-    width: 60px;
-    height: 90px;
-    object-fit: cover;
-    border-radius: 0.4rem;
-}
-
-.resumen__detalle {
-    flex-grow: 1;
-}
-
-.resumen__titulo {
-    font-weight: bold;
-    font-size: 1rem;
-}
-
-.resumen__autor {
-    font-size: 0.9rem;
-    color: #666;
-}
-
-.resumen__precio {
-    color: #2980B9;
-    font-weight: 600;
-    margin-top: 0.2rem;
+.resumen__columna {
+    position: relative; /* Lo mantienes relativo como lo tienes */
+    width: 107%;
+    max-width: 400px;
+    background-color: #f0f8ff;
+    box-shadow: 0 0 10px #ccc;
+    border-radius: 10px;
+    padding: 1rem;
+    height: fit-content;
+    top: -10px;
 }
 
 /* Botones de cantidad */
