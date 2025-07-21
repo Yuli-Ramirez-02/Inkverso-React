@@ -3,10 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import "../styles/style.css"; 
 
-function CartDropdown({ mostrar = true, modoResumen = false }) {
+function CartDropdown({ mostrarCarrito = false, setMostrarCarrito = () =>{}, mostrar = true, modoResumen = false }) {
     const navigate = useNavigate();
     const { cart, updateCantidad, removeFromCart, clearCart } = useCart(); 
-    const [mostrarCarrito, setMostrarCarrito] = useState(false); 
 
 
     const total = cart.reduce((acc, item) => {
@@ -28,7 +27,7 @@ function CartDropdown({ mostrar = true, modoResumen = false }) {
         setMostrarCarrito(false);
     };
 
-    if (!mostrar) return null;
+    if (!mostrarCarrito && !modoResumen) return null;
 
 
 return (
