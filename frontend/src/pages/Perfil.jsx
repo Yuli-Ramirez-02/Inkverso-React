@@ -26,7 +26,7 @@ function Perfil() {
                 .catch(err => {
                     console.error("Error al obtener perfil:", err);
                 });
-        }, [usuario]);
+        }, []);
             
     
         const handleSubmit = async(e) => {
@@ -42,7 +42,15 @@ function Perfil() {
             const data = await res.json();
 
             if (data.ok) {
-                setMensaje("Perfil actualizado correctamente");
+                setMensajeExito("Perfil actualizado correctamente");
+                
+                // Actualizar localStorage
+                localStorage.setItem("usuario", JSON.stringify({
+                    ...usuario,
+                    nombre: name,
+                    apellido: lastname,
+                    direccion: address
+                }));
             } else {
                 alert(data.error || "No se pudo actualizar");
             }
@@ -110,7 +118,7 @@ function Perfil() {
                             id='email'
                             name='email'
                             value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            readOnly
                             required
                             autoComplete='email'
                             placeholder='Tu correo'
@@ -118,7 +126,19 @@ function Perfil() {
                     </div>
 
                     <button type='submit' className='button__blue'>Actualizar</button>
-                    {mensajeExito && <p className="mensaje__exito">{mensajeExito}</p>}
+                    {mensajeExito && (
+                    <div className="modal__overlay">
+                        <div className="modal__content">
+                            <button className="modal__close" onClick={() => setMensajeExito(false)}>✖</button>
+
+                            <img src='/src/assets/bxs-check-circle.svg' className='icono_check'></img>
+                            
+                            <div className="modal__text">
+                                <h3>Tu cuenta fue actualizada exitosamente.</h3>
+                            </div>
+                        </div>
+                    </div>
+                    )}
                 </form>
             </div>
         </div>
