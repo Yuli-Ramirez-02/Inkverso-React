@@ -7,6 +7,8 @@ function Recover() {
     const [newPassword, setNewPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
+    const [mensajeExito, setMensajeExito] = useState(false);
+    
     const handleSubmit = async(e) => {
         e.preventDefault();
 
@@ -29,9 +31,10 @@ function Recover() {
 
             const data = await res.json();
 
-            
+            console.log("Respuesta del backend:", data);
+
             if (data.ok) {
-                alert("Contraseña restablecida correctamente");
+                setMensajeExito(true);
             } else {
                 alert(data.error || "Error al restablecer la contraseña");
             }
@@ -94,6 +97,20 @@ function Recover() {
 
                     <button type='submit' className='button__restore button__blue'>Reestablecer</button>
                 </form>
+
+                {mensajeExito && (
+                <div className="modal__overlay">
+                    <div className="modal__content">
+                        <button className="modal__close" onClick={() => setMensajeExito(false)}>✖</button>
+
+                        <img src='/src/assets/bxs-check-circle.svg' className='icono_check'></img>
+                        
+                        <div className="modal__text">
+                            <h3>Tu contraseña fue reestablecida exitosamente.</h3>
+                        </div>
+                    </div>
+                </div>
+                )}
 
                 <p>¿Ya tienes cuenta?<Link to="/Login" className='link__register'>Inicia Sesion</Link></p>
             </div>
