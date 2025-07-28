@@ -7,12 +7,39 @@ function Recover() {
     const [newPassword, setNewPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
 
-        console.log('Correo:', email);
-        console.log('Nueva Contraseña:', newPassword);
-        console.log('Confirmar Contraseña:', confirmPassword);
+        if (newPassword !== confirmPassword) {
+                alert("Las contraseñas no coinciden");
+                return;
+            }
+
+        try {
+            const res = await fetch("http://localhost:5000/api/recover", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    email,
+                    nuevaPassword: newPassword
+                })
+            });
+
+            const data = await res.json();
+
+            
+            if (data.ok) {
+                alert("Contraseña restablecida correctamente");
+            } else {
+                alert(data.error || "Error al restablecer la contraseña");
+            }
+
+        } catch (error) {
+            console.error("Error al restablecer contraseña:", error);
+            alert("Error del servidor");
+        }
     }
     
     return(
@@ -36,12 +63,12 @@ function Recover() {
                     </div>
 
                     <div className='form'>
-                        <label htmlFor='confirmPassword'></label>
+                        <label htmlFor='newPassword'></label>
                         <input
                             type='password'
-                            id='confirmPassword'
-                            name='confirmPassword'
-                            value={confirmPassword}
+                            id='newPassword'
+                            name='newPassword'
+                            value={newPassword}
                             onChange={(e) => setNewPassword(e.target.value)}
                             required
                             minLength={8}
@@ -51,12 +78,12 @@ function Recover() {
                     </div>
 
                     <div className='form'>
-                        <label htmlFor='newPassword'></label>
+                        <label htmlFor='confirmPassword'></label>
                         <input
                             type='password'
-                            id='newPassword'
-                            name='newPassword'
-                            value={newPassword}
+                            id='confirmPassword'
+                            name='confirmPassword'
+                            value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
                             required
                             minLength={8}
