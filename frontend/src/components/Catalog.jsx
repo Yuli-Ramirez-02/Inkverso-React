@@ -1,6 +1,7 @@
 import "../styles/style.css";
 import { useCart } from "../context/CartContext";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function Catalog() {
     const [libros, setLibros] = useState([]);
@@ -27,7 +28,7 @@ function Catalog() {
                     />
 
                     <div className="libro__info">
-                        <p className="libro__id">ID: {libro.id}</p>
+                        <Link to={`/libro/${libro.id}`} className="libro__id">ID: {libro.id}</Link>
                         <h3 className="libro__titulo">{libro.titulo}</h3>
                         <p className="libro__autor">{libro.autor}</p>
                         {libro.oferta ? (

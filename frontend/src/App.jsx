@@ -15,6 +15,7 @@ import ReferenciaConsulta from "./pages/ReferenciaConsulta";
 import ArtesHumanidades from "./pages/ArtesHumanidades";
 import Educacion from "./pages/Educacion";
 import Entretenimiento from "./pages/Entretenimiento";
+import DetalleLibro from "./pages/DetalleLibro";
 
 import Login from "./pages/Login";
 
@@ -47,6 +48,7 @@ function App() {
         <Route path="/ArtesHumanidades" element={<ArtesHumanidades />} />
         <Route path="/educacion" element={<Educacion />} />
         <Route path="/entretenimiento" element={<Entretenimiento />} />
+        <Route path="/libro/:id" element={<DetalleLibro />} />
 
         /**Login */
         <Route path="/login" element={<Login />} />
