@@ -560,7 +560,7 @@ h2 {
     color: #BFC9CA;
 }
 
-.detalle__info {
+.detalle__info{
     flex: 2;
     display: flex;
     flex-direction: column;
@@ -594,6 +594,91 @@ h2 {
     font-size: 1.1rem;
     line-height: 1.6;
 }
+
+/* ===== Sección de Reseñas ===== */
+.detalle__reseñas {
+    max-width: 800px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background-color: #f7f9fc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.detalle__reseñas h4 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+.estrellas {
+    display: flex;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+}
+
+.estrellas span {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.estrellas span:hover {
+    transform: scale(1.2);
+}
+
+.detalle__reseñas textarea {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 0.8rem;
+    font-size: 1rem;
+    resize: vertical;
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+.button__blue {
+    background-color: #3498db;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 2rem;
+}
+
+.button__blue:hover {
+    background-color: #2980b9;
+}
+
+.reseña {
+    background-color: #ffffff;
+    border-left: 4px solid #3498db;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.reseña p {
+    margin: 0.2rem 0;
+    line-height: 1.4;
+}
+
+.reseña strong {
+    color: #2c3e50;
+}
+
+.reseña small {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+
 
 
 /*Carrito*/
