@@ -21,7 +21,7 @@ function DetalleLibro() {
             .then(data => setLibro(data))
             .catch(err => console.error("Error al cargar el libro:", err));
 
-        fetch(`http://localhost:5000/api/reseñas?libro_id=${id}`)
+        fetch(`http://localhost:5000/api/resenas/${id}`)
             .then(res => res.json())
             .then(data => setReseñas(data))
             .catch(err => console.error("Error al obtener las reseñas:", err))
@@ -32,7 +32,14 @@ function DetalleLibro() {
             return alert("Debes ingresar comentario y calificación");
         }
 
-        const res = await fetch("http://localhost:5000/api/reseñas", {
+        console.log({
+            id_user: usuario?.id,
+            libro_id: id,
+            calificacion,
+            comentario
+        });
+
+        const res = await fetch("http://localhost:5000/api/resenas", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
