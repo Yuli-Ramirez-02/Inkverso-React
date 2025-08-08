@@ -7,6 +7,8 @@ import {
 import Index from "./pages/Index";
 import Catalogo from "./pages/Catalogo";
 import Perfil from "./pages/Perfil";
+import InicioAdmin from "./pages/InicioAdmin";
+//import CatalogoAdmin from "./pages/CatalogoAdmin";
 
 import Ficcion from "./pages/Ficcion";
 import NoFiccion from "./pages/NoFiccion";
@@ -29,6 +31,7 @@ import ModifyAddress from "./pages/Modificar-direccion";
 import ConfirmAddress from "./pages/Confirmar-direccion";
 
 import Pago from "./pages/Pago";
+import DashboardAdmin from "./components/DashboardAdmin";
 
 
 function App() {
@@ -39,6 +42,9 @@ function App() {
         <Route path="/" element={<Index />} />
         <Route path="/catalogo" element={<Catalogo />} />
         <Route path="/perfil" element={<Perfil />} />
+        <Route path="/inicioAdmin" element={<InicioAdmin />} />
+        <Route path="/inicioAdmin" element={<DashboardAdmin />} />
+
 
         /** Categorias */
         <Route path="/ficcion" element={<Ficcion />} />

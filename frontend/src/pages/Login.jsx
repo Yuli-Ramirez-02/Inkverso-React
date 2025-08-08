@@ -3,6 +3,7 @@ import { useAuth } from "../context/AuthContext";
 import { Link, useNavigate } from 'react-router-dom'; // Para volver al inicio
 import '../styles/style.css';
 
+
 function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -10,38 +11,38 @@ function Login() {
     const { login } = useAuth();
 
     const handleSubmit = async (e) => {
-        e.preventDefault(); //Para evitar el comportamiento por defecto del formulario de recargar la pagina
+    e.preventDefault();
 
-        try {
-            const res = await fetch("http://localhost:5000/api/login", {
-                method: "POST",
-                headers: { "Content-type" : "application/json"  },
-                body: JSON.stringify({ email: username, password })
-            });
+    try {
+        const res = await fetch("http://localhost:5000/api/login", {
+            method: "POST",
+            headers: { "Content-type" : "application/json" },
+            body: JSON.stringify({ email: username, password})
+        });
 
-            const data = await res.json();
+        const data = await res.json();
 
-            if(data.ok) {
-                //Guardamos el usuario autenticado en LocalStorage
-                login({ ...data.usuario, autenticado: true });
+        if (data.ok) {
+            console.log("Usuario autenticado:", data.usuario);
+            login({ ...data.usuario, autenticado: true });
 
-            // Redirigir al inicio
-            navigate("/");
+            console.log(data.usuario.rol)
 
-            // Forzar recarga para que Header se actualice visualmente
-            window.location.reload();
-
+            //Lógica de redirección basada en el rol
+            if (data.usuario.rol === 0) {
+                navigate("/");
             } else {
-                alert(data.mensaje || "Credenciales invalidas");
+                navigate("/inicioAdmin");
             }
-        } catch(error) {
-            console.error("Error en login:", error);
-            alert("Error en el servidor");
+
+        } else {
+            alert(data.mensaje || "Credenciales inválidas");
         }
-    
-        console.log('Usuario:', username);
-        console.log('Contraseña:', password);
-    };
+    } catch (error) {
+        console.error("Error en login:", error);
+        alert("Error en el servidor");
+    }
+};
 
     return (
         <div className='background'>

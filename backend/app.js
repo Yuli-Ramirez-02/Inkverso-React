@@ -21,7 +21,7 @@ app.use('/api/libros', librosRoutes);
 
 //Token
 app.post("/api/register", async (req, res) => {
-    const {nombre, apellido, email, password } = req.body
+    const {nombre, apellido, direccion, email, password } = req.body
     const rol = 0
 
     try {
@@ -34,8 +34,8 @@ app.post("/api/register", async (req, res) => {
         }
 
         //Usuario verificado = 0
-        await db.query("INSERT INTO usuarios (nombre, apellido, email, password, rol, verificado) VALUES (?, ?, ?, ?, ?, ?)",
-            [nombre, apellido, email, password, rol, 0]
+        await db.query("INSERT INTO usuarios (nombre, apellido, direccion, email, password, rol, verificado) VALUES (?, ?, ?, ?, ?, ?, ?)",
+            [nombre, apellido, direccion, email, password, rol, 0]
         );
 
         console.log("Usuario registrado en DB");
@@ -78,6 +78,41 @@ app.post("/api/register", async (req, res) => {
     }
 })
 
+//Obtener usuario por email
+app.get("/api/usuario", async (req, res) => {
+    const { email } = req.query;
+
+    try {
+        const [rows] = await db.query("SELECT id_user, nombre, apellido, direccion, email FROM usuarios WHERE email = ?", [email]);
+
+        if (rows.length === 0) {
+            return res.status(404).json({ ok: false, error: "Usuario no encontrado" });
+        }
+
+        res.json(rows[0]);
+    } catch (error) {
+        console.error("Error al obtener usuario:", error);
+        res.status(500).json({ ok: false, error: "Error del servidor" });
+    }
+});
+
+//Actualizar usuario
+app.put("/api/usuario", async (req, res) => {
+    const { email, nombre, apellido, direccion } = req.body;
+
+    try {
+        await db.query(
+            "UPDATE usuarios SET nombre = ?, apellido = ?, direccion = ? WHERE email = ?",
+            [nombre, apellido, direccion, email]
+        );
+
+        res.json({ ok: true, mensaje: "Usuario actualizado" });
+    } catch (error) {
+        console.error("Error al actualizar usuario:", error);
+        res.status(500).json({ ok: false, error: "Error del servidor" });
+    }
+});
+
 //Verificar
 app.get('/verificar', async (req, res) => {
     const token = req.query.token;
@@ -96,12 +131,38 @@ app.get('/verificar', async (req, res) => {
     }
 });
 
+//Recuperar contraseña
+app.post("/api/recover", async (req, res) => {
+    const { email, nuevaPassword } = req.body;
+
+    try {
+        // Verificar si el usuario existe
+        const [usuarios] = await db.query("SELECT * FROM usuarios WHERE email = ?", [email]);
+
+        if (usuarios.length === 0) {
+            return res.status(404).json({ ok: false, error: "Usuario no encontrado" });
+        }
+
+        // Actualizar contraseña
+        await db.query("UPDATE usuarios SET password = ? WHERE email = ?", [nuevaPassword, email]);
+
+        res.json({ ok: true, mensaje: "Contraseña actualizada" });
+    } catch (error) {
+        console.error("Error al restablecer contraseña:", error);
+        res.status(500).json({ ok: false, error: "Error del servidor" });
+    }
+});
+
+
 //Ruta para iniciar sesion
 app.post("/api/login", async (req, res) => {
     const { email, password } = req.body;
 
     try {
-        const [usuarios] = await db.query("SELECT * FROM usuarios WHERE email = ? AND password = ?", [email, password]);
+        const [usuarios] = await db.query(
+        "SELECT id, nombre, email, rol FROM usuarios WHERE email = ? AND password = ?",
+        [email, password]
+        );
 
         if(usuarios.length === 0) {
             return res.status(401).json({ ok:false, mensaje: "Credenciales invalidas"});
@@ -112,14 +173,22 @@ app.post("/api/login", async (req, res) => {
             return res.status(403).json({ ok: false, mensaje: "Verifica tu correo antes de iniciar sesion"});
         }
 
-        res.json({ ok: true, usuario: { id: usuario.id_user, nombre: usuario.nombre, email: usuario.email } })
+        console.log(usuario)
+        
+        res.json({ 
+            ok: true, 
+            usuario: { 
+                id: usuario.id, 
+                nombre: usuario.nombre, 
+                email: usuario.email,
+                rol: usuario.rol 
+            } 
+        });
     } catch (err) {
         console.error("Error en login", err);
-        res.status(500).json({ ok: false, mensaje: "Error en el servisor" });
+        res.status(500).json({ ok: false, mensaje: "Error en el servidor" });
     }
-})
-
-
+});
 
 //Ruta para obtener autores
 app.get("/api/autores", async (req, res) => {
@@ -158,6 +227,84 @@ app.get("/api/libros", async (req, res) => {
         res.status(500).json({error: "Error al obtener los libros"})
     }
 });
+
+// Obtener reseñas por libro
+app.get("/api/resenas/:libroId", async (req, res) => {
+    const { libroId } = req.params;
+
+    try {
+        const [reseñas] = await db.query(`
+            SELECT r.calificacion, r.comentario, r.fecha_creacion, u.nombre
+            FROM reseñas r
+            JOIN usuarios u ON r.id_user = u.id
+            WHERE r.libro_id = ?
+            ORDER BY r.fecha_creacion DESC
+        `, [libroId]);
+
+        res.json(reseñas);
+    } catch (error) {
+        console.error("Error al obtener reseñas:", error);
+        res.status(500).json({ error: "Error del servidor" });
+    }
+});
+
+// Agregar una reseña nueva
+app.post("/api/resenas", async (req, res) => {
+    const { id_user, libro_id, calificacion, comentario } = req.body;
+
+    try {
+        await db.query(`
+            INSERT INTO reseñas (id_user, libro_id, calificacion, comentario, fecha_creacion)
+            VALUES (?, ?, ?, ?, NOW())
+        `, [id_user, libro_id, calificacion, comentario]);
+
+        res.json({ ok: true, mensaje: "Reseña agregada con éxito" });
+    } catch (error) {
+        console.error("Error al agregar reseña:", error);
+        res.status(500).json({ error: "Error al guardar la reseña" });
+    }
+});
+
+// Total de libros vendidos físicos y virtuales
+app.get("/api/admin/ventas/tipo", async (req, res) => {
+    try {
+        const [result] = await db.query(`
+            SELECT tipo, SUM(cantidad) as total
+            FROM ventas
+            GROUP BY tipo
+        `); // tipo: 'físico' o 'virtual'
+        res.json(result);
+    } catch (error) {
+        res.status(500).json({ error: "Error al obtener ventas por tipo" });
+    }
+});
+
+// Total de usuarios registrados
+app.get("/api/admin/usuarios/total", async (req, res) => {
+    try {
+        const [result] = await db.query("SELECT COUNT(*) AS total FROM usuarios");
+        res.json(result[0]);
+    } catch (error) {
+        res.status(500).json({ error: "Error al contar usuarios" });
+    }
+});
+
+// Libros más vendidos por categoría
+app.get("/api/admin/ventas/categorias", async (req, res) => {
+    try {
+        const [result] = await db.query(`
+            SELECT l.categoria, SUM(v.cantidad) AS total_vendidos
+            FROM ventas v
+            JOIN libros l ON v.libro_id = l.id
+            GROUP BY l.categoria
+        `);
+        res.json(result);
+    } catch (error) {
+        res.status(500).json({ error: "Error al obtener ventas por categoría" });
+    }
+});
+
+
 
 app.listen(PORT, () => {
     console.log(`Servidor Express escuchando desde el puerto ${PORT}`);
