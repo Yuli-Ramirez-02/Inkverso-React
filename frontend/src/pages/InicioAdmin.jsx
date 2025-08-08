@@ -27,7 +27,13 @@ function InicioAdmin() {
                 const catRes = await fetch("http://localhost:5000/api/admin/ventas/categorias");
                 const catData = await catRes.json();
                 console.log("Ventas por categoría:", catData);
-                setVentasCategoria(catData);
+                setVentasCategoria(
+                    catData.map(item => ({
+                        ...item,
+                        total_vendidos: parseInt(item.total_vendidos)
+                    }))
+                );
+
 
             } catch (error) {
                 console.error("Error al cargar datos del admin:", error);
@@ -43,7 +49,7 @@ function InicioAdmin() {
         <div className="inicio-admin">
             <HeaderAdmin />
             <main className="admin-dashboard">
-                <h2>Bienvenido, Administrador</h2>
+                <h3>Bienvenido, Administrador</h3>
 
                 {/* Gráfico de barras de ventas por tipo */}
                 {ventasTipo.length > 0 && (
@@ -71,25 +77,24 @@ function InicioAdmin() {
                 {/* Gráfico de pastel de ventas por categoría */}
                 {ventasCategoria.length > 0 && (
                     <section className="grafico">
-                        <h3>Libros más vendidos por categoría</h3>
-                        <ResponsiveContainer width="100%" height={300}>
-                            <PieChart>
-                                <Pie
-                                    data={ventasCategoria}
-                                    dataKey="total_vendidos"
-                                    nameKey="categoria"
-                                    cx="50%"
-                                    cy="50%"
-                                    outerRadius={100}
-                                    label
-                                >
-                                    {ventasCategoria.map((entry, index) => (
-                                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                                    ))}
-                                </Pie>
-                                <Tooltip />
-                            </PieChart>
-                        </ResponsiveContainer>
+                    <h3>Libros más vendidos por categoría</h3>
+                    <PieChart width={400} height={300}>
+                        <Pie
+                        data={ventasCategoria}
+                        dataKey="total_vendidos"
+                        nameKey="categoria"
+                        cx="50%"
+                        cy="50%"
+                        outerRadius={100}
+                        fill="#8884d8"
+                        label
+                        >
+                        {ventasCategoria.map((entry, index) => (
+                            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                        ))}
+                        </Pie>
+                        <Tooltip />
+                    </PieChart>
                     </section>
                 )}
             </main>

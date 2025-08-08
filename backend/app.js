@@ -295,7 +295,7 @@ app.get("/api/admin/ventas/categorias", async (req, res) => {
         const [result] = await db.query(`
             SELECT l.categoria, SUM(v.cantidad) AS total_vendidos
             FROM ventas v
-            JOIN libros l ON v.libro_id = l.id
+            JOIN libros l ON v.id_libro = l.id
             GROUP BY l.categoria
         `);
         res.json(result);
