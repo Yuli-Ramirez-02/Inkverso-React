@@ -3,13 +3,13 @@ import HeaderAdmin from "../components/HeaderAdmin";
 
 
 
-function Usuario() {
+function CatalogoAdmin() {
     return (
         <>
         <HeaderAdmin/>
-        <h2>Aqui es usuarios</h2>
+        <h2>Aqui es Catalogo Admin</h2>
         </>
     );
 }
 
-export default Usuario;
+export default CatalogoAdmin;

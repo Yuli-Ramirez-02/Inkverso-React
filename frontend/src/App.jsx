@@ -8,7 +8,8 @@ import Index from "./pages/Index";
 import Catalogo from "./pages/Catalogo";
 import Perfil from "./pages/Perfil";
 import InicioAdmin from "./pages/InicioAdmin";
-//import CatalogoAdmin from "./pages/CatalogoAdmin";
+import CatalogoAdmin from "./pages/CatalogoAdmin";
+import Usuarios from "./pages/Usuarios";
 
 import Ficcion from "./pages/Ficcion";
 import NoFiccion from "./pages/NoFiccion";
@@ -44,7 +45,8 @@ function App() {
         <Route path="/perfil" element={<Perfil />} />
         <Route path="/inicioAdmin" element={<InicioAdmin />} />
         <Route path="/inicioAdmin" element={<DashboardAdmin />} />
-
+        <Route path="/catalogoAdmin" element={<CatalogoAdmin />} />
+        <Route path="/usuarios" element={<Usuarios />} />
 
         /** Categorias */
         <Route path="/ficcion" element={<Ficcion />} />
