@@ -304,6 +304,46 @@ app.get("/api/admin/ventas/categorias", async (req, res) => {
     }
 });
 
+// Ruta para obtener usuarios activos (rol 0) con su estado de pedido
+app.get("/api/admin/usuarios", async (req, res) => {
+    try {
+        const [rows] = await db.query(`
+            SELECT 
+                u.id AS id_user,
+                u.nombre,
+                u.estado,
+                COALESCE(
+                    CASE 
+                        WHEN v.estado_pedido = 'pago' THEN 'Pago'
+                        WHEN v.estado_pedido = 'compro' THEN 'Compró'
+                        WHEN v.estado_pedido = 'pendiente' THEN 'Pendiente'
+                        ELSE 'No aplica'
+                    END, 'No aplica'
+                ) AS pedido
+            FROM usuarios u
+            LEFT JOIN ventas v ON u.id = v.id_user
+            WHERE u.rol = 0
+            GROUP BY u.id, u.nombre, u.estado, v.estado_pedido
+        `);
+
+        res.json({ ok: true, usuarios: rows });
+    } catch (error) {
+        console.error("Error al obtener usuarios:", error);
+        res.status(500).json({ ok: false, error: "Error en el servidor" });
+    }
+});
+
+// Desactivar usuario por ID
+app.put("/api/admin/usuarios/desactivar/:id", async (req, res) => {
+    const { id } = req.params;
+    try {
+        await db.query("UPDATE usuarios SET estado = 0 WHERE id = ?", [id]);
+        res.json({ ok: true, mensaje: "Usuario desactivado" });
+    } catch (error) {
+        console.error("Error al desactivar usuario:", error);
+        res.status(500).json({ error: "Error en el servidor" });
+    }
+});
 
 
 app.listen(PORT, () => {

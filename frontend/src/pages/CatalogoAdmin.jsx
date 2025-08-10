@@ -2,7 +2,6 @@ import "../styles/style.css";
 import HeaderAdmin from "../components/HeaderAdmin";
 
 
-
 function CatalogoAdmin() {
     return (
         <>

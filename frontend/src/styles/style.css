@@ -117,6 +117,12 @@ h2 {
     color: white;
     text-decoration: none;
     font-size: 1rem;
+    margin: 0 10px 0 0;
+}
+
+.nav__content {
+    background-color: #2980B9;
+    
 }
 
 /*Nav*/
@@ -925,15 +931,6 @@ h2 {
     background-color: #218838;
 }
 
-/* === RESPONSIVE === */
-@media (max-width: 900px) {
-    .pago__contenedor {
-        grid-template-columns: 1fr;
-    }
-}
-
-
-
 /*Footer*/
 .bar__content {
     width: 100%;
@@ -963,6 +960,30 @@ h2 {
     width: 5rem;
     height: 2rem;
 }
+
+/*Graficas*/
+.admin-dashboard {
+    padding: 2rem;
+    background: #f4f4f4;
+}
+
+.grafico {
+    margin-bottom: 2rem;
+    background: white;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 900px) {
+    .pago__contenedor {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
 
 /* Responsividad */
 @media (max-width: 400px) {
@@ -1032,19 +1053,6 @@ h2 {
     }
 }
 
-/*Graficas*/
-.admin-dashboard {
-    padding: 2rem;
-    background: #f4f4f4;
-}
-
-.grafico {
-    margin-bottom: 2rem;
-    background: white;
-    padding: 1rem;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
 
 
 
