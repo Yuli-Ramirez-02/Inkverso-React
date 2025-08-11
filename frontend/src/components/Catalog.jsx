@@ -25,9 +25,9 @@ function Catalog() {
                         src={`/assets/libros/${libro.id}.jpg`}
                         alt={libro.titulo}
                         className="libro__img"
-                    />
+                />
 
-                    <div className="libro__info">
+                <div className="libro__info">
                         <Link to={`/libro/${libro.id}`} className="libro__id">ID: {libro.id}</Link>
                         <h3 className="libro__titulo">{libro.titulo}</h3>
                         <p className="libro__autor">{libro.autor}</p>

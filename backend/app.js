@@ -83,7 +83,7 @@ app.get("/api/usuario", async (req, res) => {
     const { email } = req.query;
 
     try {
-        const [rows] = await db.query("SELECT id_user, nombre, apellido, direccion, email FROM usuarios WHERE email = ?", [email]);
+        const [rows] = await db.query("SELECT id, nombre, apellido, direccion, email FROM usuarios WHERE email = ?", [email]);
 
         if (rows.length === 0) {
             return res.status(404).json({ ok: false, error: "Usuario no encontrado" });
@@ -371,6 +371,20 @@ app.delete("/api/admin/libros/:id", async (req, res) => {
     }
 });
 
+// Obtener libros con oferta
+app.get("/api/oferta", async (req, res) => {
+    try {
+        const [rows] = await db.query(`
+            SELECT id, titulo, autor, precio, oferta, precio_oferta, categoria, descripcion
+            FROM libros
+            WHERE oferta = 1
+        `);
+        res.json({ ok: true, ofertas: rows });
+    } catch (error) {
+        console.error("Error al obtener ofertas:", error);
+        res.status(500).json({ ok: false, error: "Error en el servidor" });
+    }
+});
 
 
 app.listen(PORT, () => {
