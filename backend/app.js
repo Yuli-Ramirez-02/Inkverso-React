@@ -345,6 +345,33 @@ app.put("/api/admin/usuarios/desactivar/:id", async (req, res) => {
     }
 });
 
+// Obtener todos los libros para el catálogo admin
+app.get("/api/admin/libros", async (req, res) => {
+    try {
+        const [rows] = await db.query(`
+            SELECT id, titulo, autor, categoria, oferta, precio
+            FROM libros
+        `);
+        res.json({ ok: true, libros: rows });
+    } catch (error) {
+        console.error("Error al obtener libros:", error);
+        res.status(500).json({ ok: false, error: "Error en el servidor" });
+    }
+});
+
+// Eliminar libro
+app.delete("/api/admin/libros/:id", async (req, res) => {
+    const { id } = req.params;
+    try {
+        await db.query("DELETE FROM libros WHERE id = ?", [id]);
+        res.json({ ok: true, mensaje: "Libro eliminado correctamente" });
+    } catch (error) {
+        console.error("Error al eliminar libro:", error);
+        res.status(500).json({ ok: false, error: "Error al eliminar libro" });
+    }
+});
+
+
 
 app.listen(PORT, () => {
     console.log(`Servidor Express escuchando desde el puerto ${PORT}`);
