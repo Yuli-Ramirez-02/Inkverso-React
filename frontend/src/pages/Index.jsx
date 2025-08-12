@@ -1,12 +1,13 @@
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/style.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 function Index() {
     const [oferta, setOferta] = useState([]); // Siempre array
     const navigate = useNavigate();
+    const ofertasRef = useRef(null);
 
     useEffect(() => {
         fetch("http://localhost:5000/api/oferta")
@@ -24,9 +25,15 @@ function Index() {
             });
     }, []);
 
+    const scrollToOfertas = () => {
+        if (ofertasRef.current) {
+            ofertasRef.current.scrollIntoView({ behavior: "smooth" });
+        }
+    };
+
     return (
         <>
-            <Header />
+            <Header onOfertasClick={scrollToOfertas}/>
 
             <main className="main">
                 <nav className="bar">
@@ -76,7 +83,7 @@ function Index() {
                     </div>
                 </section>
 
-                <section className="offers">
+                <section ref={ofertasRef} className="offers">
                     <div className="offers__header">
                         <span className="offers__bar">-</span>
                         <h2>ofertas</h2>

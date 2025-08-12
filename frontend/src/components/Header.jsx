@@ -2,7 +2,7 @@ import "../styles/style.css"
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
-function Header() {
+function Header({ onOfertasClick }) {
     const navigate = useNavigate();
     const { usuario, logout } = useAuth();
 
@@ -25,7 +25,7 @@ function Header() {
 
         <div className="div">
             <h1 className="div__inkverso">INKVERSO</h1>
-            <button className="div__offer">OFERTAS</button>
+            <button className="div__offer" onClick={onOfertasClick}>OFERTAS</button>
         </div>
 
         <div className="entry">
